@@ -125,7 +125,10 @@ test:
         name: Execute test step
         code: |
             echo "!!! Start to API TEST now ..."
-            sudo yum install python27
+            whereis python
+            echo "!!! Start to API TEST now ..."
+            sudo yum update
+            sudo yum install -y python27
             sudo yum install -y python-pip
             sudo pip install requests
             sudo curl -L http://tungwaiyip.info/software/HTMLTestRunner_0_8_2/HTMLTestRunner.py -o /usr/lib/python2.7/site-packages/HTMLTestRunner.py
