@@ -143,3 +143,4 @@ test:
             cd ./testapi/
             sudo python run_all_cases.py
             sudo cp -rf reports/ $WERCKER_REPORT_ARTIFACTS_DIR
+            sudo echo "[Success] API Testing - Done. Please click Download artifact to check API Test Report."
