@@ -136,8 +136,7 @@ test:
             echo "!!! Start to run TestCases ..."
             sudo mkdir -p ./testapi/reports
             sudo python ./testapi/parseXML.py > log.txt
-            cat log.txt
-            sudo sed -i "s/app/test/g" log.txt
+            sudo sed -i 's/hello//g' log.txt
             test_env=$(cat log.txt)
             echo "test_env: $test_env"
             ip_address=$(echo ${test_env%*/})
