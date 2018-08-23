@@ -126,14 +126,11 @@ test:
         code: |
             echo "!!! Start to API TEST now ..."
             python -V
-            echo "!!! Start to API TEST now ..."
             sudo yum install -y yum-utils
             sudo yum-config-manager --enable ol7_developer_EPEL
-            echo "!!! Start to API TEST now ..."
             sudo yum install -y python-pip
             sudo pip install requests
             sudo curl -L http://tungwaiyip.info/software/HTMLTestRunner_0_8_2/HTMLTestRunner.py -o /usr/lib/python2.7/site-packages/HTMLTestRunner.py
-            echo "!!! Start to run TestCases ..."
             sudo mkdir -p ./testapi/reports
             sudo python ./testapi/parseXML.py > log.txt
             sudo sed -i 's/hello//g' log.txt
@@ -141,7 +138,7 @@ test:
             echo "test_env: $test_env"
             ip_address=$(echo ${test_env%*/})
             echo "ip_address: $ip_address"
-            sudo sed "s/IPADDRESS/$ip_address/g" ./testapi/conf.py
+            sudo sed 's/IPADDRESS/'"$ip_address"'/g' ./testapi/conf.py
             cat ./testapi/conf.py
             cd ./testapi/
             sudo python run_all_cases.py
