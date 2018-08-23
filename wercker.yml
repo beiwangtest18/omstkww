@@ -170,7 +170,7 @@ test:
             sudo ./result.sh
             
             echo "!!! Start to API TEST now ..."
-            sudo yum install python2.7
+            #sudo yum install python2.7
             sudo yum install -y python-pip
             sudo pip install requests
             sudo curl -L http://tungwaiyip.info/software/HTMLTestRunner_0_8_2/HTMLTestRunner.py -o /usr/lib/python2.7/site-packages/HTMLTestRunner.py
