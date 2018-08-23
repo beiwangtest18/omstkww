@@ -142,6 +142,6 @@ test:
             ip_address=$(echo ${test_env%*/})
             echo "ip_address: $ip_address"
             sudo sed -i 's/IPADDRESS/$ip_address/g' ./testapi/conf.py
-            cat ./testapi/config.py
+            cat ./testapi/conf.py
             sudo python ./testapi/run_all_cases.py
             sudo cp -rf ./testapi/reports/ $WERCKER_REPORT_ARTIFACTS_DIR
