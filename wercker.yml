@@ -127,10 +127,10 @@ test:
             echo "!!! Start to API TEST now ..."
             python -V
             echo "!!! Start to API TEST now ..."
-            sudo yum update -y
-            #sudo yum install -y python27
-            yum list python2-pip
-            sudo yum install -y python2-pip
+            sudo yum install -y yum-utils
+            sudo yum-config-manager --enable ol7_developer_EPEL
+            echo "!!! Start to API TEST now ..."
+            sudo yum install -y python-pip
             sudo pip install requests
             sudo curl -L http://tungwaiyip.info/software/HTMLTestRunner_0_8_2/HTMLTestRunner.py -o /usr/lib/python2.7/site-packages/HTMLTestRunner.py
             echo "!!! Start to run TestCases ..."
