@@ -141,7 +141,8 @@ test:
             echo "test_env: $test_env"
             ip_address=$(echo ${test_env%*/})
             echo "ip_address: $ip_address"
-            sudo sed -i 's/IPADDRESS/$ip_address/g' ./testapi/conf.py
+            sudo sed -i s/"IPADDRESS"/$ip_address ./testapi/conf.py
             cat ./testapi/conf.py
+            cd ./testapi/
             sudo python ./testapi/run_all_cases.py
             sudo cp -rf ./testapi/reports/ $WERCKER_REPORT_ARTIFACTS_DIR
