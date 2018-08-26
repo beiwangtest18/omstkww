@@ -57,7 +57,7 @@ test:
             ip_address=$(echo ${test_env%*/})
             echo "ip_address: $ip_address"
             echo "==============================================="
-            sudo sed "s|IPADDRESS|$ip_address|g" ./testapi/conf.py
+            sudo sed -i "s|IPADDRESS|$ip_address|g" ./testapi/conf.py
             echo "==============================================="
             cat ./testapi/conf.py
             echo "==============================================="
