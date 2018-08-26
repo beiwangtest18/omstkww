@@ -85,6 +85,10 @@ test:
             sudo curl -L http://tungwaiyip.info/software/HTMLTestRunner_0_8_2/HTMLTestRunner.py -o /usr/lib/python2.7/site-packages/HTMLTestRunner.py
             sudo mkdir -p ./testapi/reports
             echo "==============================================="
+            pwd
+            echo "==============================================="
+            ls -lart
+            echo "==============================================="
             cat ./test/functional/WhackaPodUIAuto/config/ServerConfig.xml
             echo "==============================================="
             pwd
