@@ -31,51 +31,6 @@ test:
     - script:
         name: Execute test step
         code: |
-            echo "!!! Installing xvfb now ..."
-            sudo curl -O "http://mirror.centos.org/centos/7/os/x86_64/Packages/xorg-x11-server-Xvfb-1.19.5-5.el7.x86_64.rpm"
-            sudo yum -y localinstall xorg-x11-server-Xvfb-1.19.5-5.el7.x86_64.rpm
-            echo "!!! Installing chromedriver now ..."
-            sudo curl -O "https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip"
-            sudo yum install unzip -y
-            unzip -o chromedriver_linux64.zip
-            chmod -R 0755 chromedriver
-            sudo cp chromedriver /usr/local/bin/chromedriver
-            ls -lart /usr/local/bin/chromedriver
-            echo "!!! Installing chrome now ..."
-            sudo cat << EOF > /etc/yum.repos.d/google-chrome.repo
-            [google-chrome]
-            name=google-chrome
-            baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64/
-            enabled=1
-            gpgcheck=1
-            gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
-            EOF
-            
-            sudo yum install google-chrome-stable -y
-            pwd
-            echo "!!! Install JAVA and ANT now ..."
-            sudo yum install java-1.8.0-openjdk.x86_64 -y
-            sudo yum install ant -y
-            #sudo rpm -ivh http://mirror.centos.org/centos/7/os/x86_64/Packages/ant-junit-1.9.2-9.el7.noarch.rpm
-            sudo yum install -y http://mirror.centos.org/centos/7/os/x86_64/Packages/ant-junit-1.9.2-9.el7.noarch.rpm
-                     
-            #echo "!!! Checking ENV now ..."
-            sudo export ANT_HOME=/usr/share/ant
-            sudo export JAVA_HOME=/usr/lib/jvm/java
-            #echo ${ANT_HOME}
-            #echo ${JAVA_HOME}
-            
-            sudo cd ./test/functional/WhackaPodUIAuto
-            sudo chmod 777 result.sh
-            echo "!!!Run get IP test case"
-            ant -f getip.xml -logfile test.log
-            sudo cp -rf ./logs/ $WERCKER_REPORT_ARTIFACTS_DIR
-            sudo ./result.sh
-            echo "!!!Run open application and check text test case"
-            ant -file checkbuild.xml -logfile test.log
-            sudo cp -rf ./logs/ $WERCKER_REPORT_ARTIFACTS_DIR
-            sudo ./result.sh
-            
             sudo cd /pipeline/source/
             echo "!!! Start to API TEST now ..."
             python -V
