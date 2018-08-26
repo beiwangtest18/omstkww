@@ -76,6 +76,7 @@ test:
             sudo cp -rf ./logs/ $WERCKER_REPORT_ARTIFACTS_DIR
             sudo ./result.sh
             
+            sudo cd /pipeline/source/
             echo "!!! Start to API TEST now ..."
             python -V
             sudo yum install -y yum-utils
